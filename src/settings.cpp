@@ -86,10 +86,11 @@ KeyEvent pollKeys() {
   ev.enter = state.enter;
   ev.back = state.del;
   // NOTE: M5Unified's KeysState doesn't expose a named `.esc` field on all
-  // versions — isKeyPressed(KEY_OPT) is the reliable path. Confirmed against
-  // your installed library: it doesn't have a KEY_ESC constant at all — the
-  // ESC/OPT key in this library version is named KEY_OPT.
-  ev.escape = M5Cardputer.Keyboard.isKeyPressed(KEY_OPT);
+  // versions — isKeyPressed(KEY_ESCAPE) is the reliable path. Confirmed
+  // straight from the M5Cardputer library source (Keyboard_def.h): the
+  // dedicated ESC key's constant is KEY_ESCAPE (0x29) — neither KEY_ESC nor
+  // KEY_OPT (that's the separate teal Opt key) are correct.
+  ev.escape = M5Cardputer.Keyboard.isKeyPressed(KEY_ESCAPE);
   for (char c : state.word) {
     if (c == ',') ev.left = true;
     else if (c == '/') ev.right = true;
