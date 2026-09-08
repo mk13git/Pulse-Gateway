@@ -1,12 +1,3 @@
-Path:
-
-```
-src/recordings.cpp
-```
-
-Content:
-
-```cpp
 #include "recordings.h"
 #include "settings.h"
 #include "net.h"
